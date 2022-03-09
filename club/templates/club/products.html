@@ -3,9 +3,8 @@
 <h2>Products</h2>
 <ul>
     {% for p in product_list %}
-     <li>{{ p.productname }}</li>
-     {% endfor %}
-
+     <li><a href="{% url 'detail' id=p.id %}"> {{ p.productname }}</a></li>
+    {% endfor %}
 </ul>
 
 {% endblock %}
