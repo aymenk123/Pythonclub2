@@ -18,11 +18,18 @@ class Product(models.Model):
     productname=models.CharField(max_length=255)
     producttype=models.ForeignKey(PythonType, on_delete=models.DO_NOTHING)
     user=models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    dataentered=models.DateField()
+    dateentered=models.DateField()
     price=models.DecimalField(max_digits=6,decimal_places=2)
     producturl=models.URLField()
     description=models.TextField()
 
+    def discountAmount(self):
+        self.discount=self.price * .05
+        return self.discount
+#need to figure out why this is not working
+    def discountPrice(self):
+        disc=self.discountAmount()
+        self.discountedPrice=self.price-disc
 
     def __str__(self):
         return self.productname
